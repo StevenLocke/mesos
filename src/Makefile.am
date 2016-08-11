@@ -2353,6 +2353,11 @@ uninstall-hook:
 # http://lists.gnu.org/archive/html/automake/2013-01/msg00051.html
 check-local: tests
 	./mesos-tests
+if ENABLE_NEW_CLI
+	@echo ""
+	@source $(MESOS_CLI_SRCDIR)/activate; \
+	 python $(MESOS_CLI_SRCDIR)/bin/tests.py;
+endif
 
 if INSTALL_TESTS
 # If we enabled test installation, we can run the tests from the
